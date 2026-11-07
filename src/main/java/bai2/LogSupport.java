@@ -1,12 +1,12 @@
 package bai2;
 
-/** Small formatting utilities for non-sensitive audit logs. */
+/** Ho tro an bot so tai khoan trong log. */
 final class LogSupport {
 
   private LogSupport() {
   }
 
-  /** Avoid recording a full account identifier in log files. */
+  /** Chi hien thi bon so cuoi tai khoan. */
   static String maskAccountNumber(long accountNumber) {
     String digits = Long.toString(accountNumber);
     return "****" + digits.substring(Math.max(0, digits.length() - 4));

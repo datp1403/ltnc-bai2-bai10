@@ -1,16 +1,16 @@
-# Anh chup va log thuc te (chua co)
+# Ảnh và log minh chứng
 
-**Thu muc nay chu y de trong.** Khong co anh/log nao duoc tao gia.
-Sau khi chay GitHub Actions, chuyen screenshots vao day va dat ten:
+Chỗ này để lưu ảnh sau khi mình chạy bài trên IntelliJ và GitHub Actions.
 
-- `bai2-checkstyle-success.png`
-- `bai3-fail.png`, `bai3-fixed.png`, `bai3-jar-artifact.png`
-- `bai4-linux-windows-macos.png`, `bai4-path-fail.png`, `bai4-path-fixed.png`
-- `bai5-jacoco-80.png`, `bai5-jacoco-artifact.png`
-- `bai6-before-cache.png`, `bai6-after-cache.png`
-- `bai7-pr-comments.png`, `bai7-merge-blocked.png`, `bai7-fixed.png`
-- `bai8-java-jar.png`
-- `bai9-console-log.png`, `bai9-file-log.png`
-- `bai10-failure-1.png` .. `bai10-failure-4.png`, `bai10-final-green.png`
+Những ảnh quan trọng cần có:
 
-Bao cao can ghi run URL, commit SHA, log trich dan, loi, nguyen nhan, fix.
+- Bài 2: Checkstyle báo 0 lỗi.
+- Bài 3: CI đỏ do lỗi test, sửa xong CI xanh và có JAR artifact.
+- Bài 4: matrix 3 hệ điều hành, lỗi đường dẫn và kết quả sau khi sửa.
+- Bài 5: báo cáo JaCoCo và artifact.
+- Bài 6: log và thời gian chạy trước/sau khi bật cache.
+- Bài 7: bot bình luận lỗi trên PR, trạng thái chặn merge, kết quả sau sửa.
+- Bài 8–9: lệnh chạy JAR, log ở console và trong file.
+- Bài 10: log từng lỗi, bản sửa và pipeline cuối cùng xanh.
+
+Chưa có ảnh trong thư mục này thì chưa coi là đã có minh chứng. Không dùng ảnh chụp giả.

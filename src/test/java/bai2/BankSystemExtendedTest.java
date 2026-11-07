@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
-/** Tests more edge cases and object accessors for the coverage gate. */
+/** Kiem tra them cac truong hop dac biet cua BankSystem. */
 class BankSystemExtendedTest {
 
   @Test

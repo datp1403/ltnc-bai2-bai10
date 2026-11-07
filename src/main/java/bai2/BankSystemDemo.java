@@ -5,14 +5,14 @@ import java.nio.charset.StandardCharsets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Entry point for the bank system demonstration. */
+/** Chay thu mot vai thao tac co ban cua BankSystem. */
 public final class BankSystemDemo {
   private static final Logger LOGGER = LoggerFactory.getLogger(BankSystemDemo.class);
 
   private BankSystemDemo() {
   }
 
-  /** Runs account operations and data import with structured logging. */
+  /** Nap, rut tien va doc thu danh sach khach hang. */
   public static void main(String[] args) {
     LOGGER.info("BankSystem demonstration started");
 

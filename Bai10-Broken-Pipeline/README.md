@@ -1,22 +1,20 @@
-# Bai 10 - The broken pipeline
+# Bài 10 – The Broken Pipeline
 
-File `ShippingCalculator.java`, tests va `pom.xml` trong thu muc nay la **ban da sua**.
-Doi chieu file goc trong Google Docs: https://docs.google.com/document/d/1ERxmVLpqZbTBTI15N40oB5uHmu57HllpGK2oDSr-L50/
+Đây là dự án ShippingCalculator theo đề Google Docs. Thư mục hiện tại là bản **đã sửa** để chạy được JUnit 5 với Maven.
 
-## Huong dan gay loi va sua tung loi theo thu tu
+## Các lỗi cần kiểm tra lần lượt
 
-1. **Thieu checkout**: trong `.github/workflows/shipping-ci.yml`, tam thoi xoa step `Checkout code`, push, mo Actions de lay log `pom.xml` khong ton tai (vi job dang o thu muc con, co the gap loi working-directory tu dau). Sua bang them `actions/checkout@v7`, push lai cho xanh.
-2. **Sai dependency**: doi `logback-classic` version thanh `9.9.9`, push, doc log `Could not find artifact ... 9.9.9`. Sua ve `1.4.11`, push xanh.
-3. **Surefire qua cu**: doi plugin `maven-surefire-plugin` tu `3.2.5` sang `2.12.4`, chay `mvn -DfailIfNoTests=true clean verify`; JUnit 5 co the khong duoc phat hien: ghi lai `Tests run: 0`/`No tests were executed` neu xuat hien. Sua ve `3.2.5`, chung minh `Tests run: 4`.
-4. **Loi tu tao**: doi assert gia cuoc STANDARD tu `15000.0` thanh `16000.0`, push, chup CI do + log `expected ... but was ...`. Phuc hoi 15000.0, push xanh.
+1. **Thiếu bước checkout:** xóa bước checkout trong `shipping-ci.yml` rồi chạy thử, quan sát việc không tìm thấy mã nguồn hoặc `pom.xml`. Sau đó thêm lại `actions/checkout`.
+2. **Sai phiên bản Logback:** đổi `logback-classic` thành `9.9.9`, đọc log lỗi không tìm thấy dependency, sau đó đưa về `1.4.11`.
+3. **Surefire quá cũ:** đổi từ `3.2.5` về `2.12.4`, xem JUnit 5 có được phát hiện không. Nếu Maven không báo đỏ mà chạy 0 test, phải ghi đúng đây là lỗi không chạy test, không được nói là build fail.
+4. **Lỗi tự tạo:** sửa expected ở test STANDARD từ `15000.0` thành `16000.0`. Test sẽ sai; sửa lại để pipeline xanh.
 
-**Quan trong:** Khong chup anh gia hay viet log khong thuc su xuat hien. Neu loi 3 khong lam job do, ghi ro no la *test-discovery defect* (build xanh gia) va bao cao so luong test chay 0; khong tu tuyen bo no la build failure.
+Mình đặt các đoạn code cần dùng trong thư mục `scenarios/` để không phá bản đang nộp. Mỗi lần thử chỉ tạo một lỗi, lưu URL run và ảnh trước/sau sửa.
 
-## Chay test local
+Chạy riêng dự án này:
 
-```powershell
-cd Bai10-Broken-Pipeline
+```bash
 mvn -DfailIfNoTests=true clean verify
 ```
 
-Ghi chung minh: anh Actions run, step do/xanh, dong log thuc te, commit fix.
+[Shipping CI đang chạy thành công](https://github.com/datp1403/ltnc-bai2-bai10/actions/runs/42334223035). **Các lần chạy đỏ theo yêu cầu chưa được thực hiện đầy đủ**, cần bổ sung trước khi nộp.

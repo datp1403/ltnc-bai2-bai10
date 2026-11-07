@@ -1,31 +1,42 @@
-# LTNC - Bai 2 den Bai 10: BankSystem + GitHub Actions + Broken Pipeline
+# Bài tập Lập trình nâng cao - Bài 2 đến Bài 10
 
-**Can cu:** Google Docs `9 - CI-CD` do sinh vien cung cap.
+Repo này mình dùng để làm các bài thực hành về Maven, kiểm tra code và GitHub Actions.
+Mình dùng **BankSystem** cho bài 2 đến bài 9 vì các bài có liên quan với nhau. Bài 10 dùng **ShippingCalculator** theo đề riêng.
 
-## Cau truc
+## Có những gì trong repo?
 
-- Thu muc goc (pom.xml va `src/`) la **1 du an Maven BankSystem** lam Bai 2-9.
-- `.github/workflows/ci.yml`: push/PR, OS matrix, Maven `verify`, cache Maven, upload JAR & JaCoCo.
-- `.github/workflows/pr-checkstyle.yml`: PR Checkstyle comments (Bai 7).
-- `Bai10-Broken-Pipeline/`: Maven project ShippingCalculator doc lap, workflow CI rieng.
-- `scenarios/`: huong dan **gay loi co y**, khong pha code nop cuoi.
-- `docs/`: giai thich tung bai.
-- `EVIDENCE/`: vi tri de anh va logs sau khi chay thuc te.
+- `src/main/java/bai2`: chương trình ngân hàng và các lớp liên quan.
+- `src/test/java/bai2`: test cho các thao tác nạp, rút tiền, đọc dữ liệu khách hàng và xử lý đường dẫn.
+- `pom.xml`: Maven, Checkstyle, JUnit, JaCoCo và đóng gói JAR.
+- `.github/workflows/`: các workflow GitHub Actions.
+- `Bai10-Broken-Pipeline/`: dự án của bài 10.
+- `scenarios/`: các ví dụ để thử gây lỗi rồi sửa lại theo yêu cầu.
+- `BAO_CAO.md`: mình ghi lại cách làm và kết quả của từng bài.
 
-## Bat dau tu may Windows + IntelliJ
+## Cách chạy
 
-1. Giai nen zip vao mot thu muc moi, khong ghi de Bai1 hay Bai2 cu.
-2. Mo IntelliJ > File > Open > chon thu muc `LTNC_Bai2_den_Bai10` (thu muc co pom.xml).
-3. Chon JDK 17+ > Reload Maven project.
-4. Trong Terminal o thu muc goc: `mvn clean verify`.
-5. Xem `target/site/jacoco/index.html` (JaCoCo), `target/bank-system-1.0-SNAPSHOT.jar` (JAR).
-6. Chay `java -jar target/bank-system-1.0-SNAPSHOT.jar` va xem `logs/bank-system.log`.
-7. Chay `cd Bai10-Broken-Pipeline` roi `mvn -DfailIfNoTests=true clean verify`.
-8. Doc file `HUONG_DAN_GITHUB.md` de tao repo va xem Actions.
+Cần JDK 17 và Maven. Mở terminal tại thư mục repo và chạy:
 
-## Trang thai xac minh
+```bash
+mvn clean verify
+mvn checkstyle:check
+java -jar target/bank-system-1.0-SNAPSHOT.jar
+```
 
-Da kiem tra cau truc tep, XML/YAML va Java syntax o muc local (neu duoc bao cao).
-**Chua the khang dinh `mvn clean verify` / coverage >=80% / Checkstyle BUILD SUCCESS / GitHub Actions xanh,**
-vi moi truong tao file khong cai Maven va khong truy cap Maven Central, va sinh vien chua tao repo GitHub.
-Can chay thuc te va ghi anh tai `EVIDENCE/` truoc khi nop. 
+Bài 10 chạy riêng:
+
+```bash
+cd Bai10-Broken-Pipeline
+mvn clean verify
+```
+
+File log BankSystem được lưu tại `logs/bank-system.log`. Báo cáo JaCoCo nằm ở `target/site/jacoco/index.html`.
+
+## Kết quả mình đã kiểm tra trên GitHub
+
+Ngày 07/11/2026, GitHub Actions chạy thành công:
+
+- [BankSystem CI](https://github.com/datp1403/ltnc-bai2-bai10/actions/runs/42334223051): Ubuntu, Windows và macOS đều xanh. Checkstyle 0 lỗi, 23 test đạt, bước kiểm tra JaCoCo đạt ngưỡng cấu hình.
+- [Shipping CI](https://github.com/datp1403/ltnc-bai2-bai10/actions/runs/42334223035): build thành công, 4 test đạt.
+
+Mình vẫn cần lưu ảnh minh chứng cho các lần **cố tình tạo lỗi rồi sửa** ở bài 3, 4, 7 và 10; phần này không thể thay bằng ảnh tự tạo. Hướng dẫn xem thêm trong `CACH_CHAY.md`.
