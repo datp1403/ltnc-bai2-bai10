@@ -1,0 +1,7 @@
+# Demo loi so 4 tu tao:
+# Trong ShippingCalculatorTest.java, doi:
+assertEquals(15000.0, calculator.calculate(5, "STANDARD"));
+# thanh
+assertEquals(16000.0, calculator.calculate(5, "STANDARD"));
+# Push: JUnit assertion mismatch makes CI red.
+# Sua ve 15000.0, push lai de CI xanh.

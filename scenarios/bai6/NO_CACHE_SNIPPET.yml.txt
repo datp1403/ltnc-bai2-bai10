@@ -1,0 +1,4 @@
+# Demo Bai 6: bo duy nhat dong 'cache: maven' trong .github/workflows/ci.yml
+# cho lan baseline. Sau do them lai 'cache: maven' va push de tao cache.
+# Push them mot commit nho de quan sat cache hit.
+# Ghi run number, duration va dong Cache restored / Cache saved trong Actions logs.

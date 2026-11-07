@@ -1,0 +1,7 @@
+Demo bai 3: trong BankSystemTest.java doi dong
+  assertEquals(2300.0, account.getBalance());
+thanh
+  assertEquals(9999.0, account.getBalance());
+Commit, push, quan sat job mau do tai step Maven, copy error "expected"/"actual".
+Sau do hoan tac dong va push lai, chup job mau xanh.
+KHONG de loi nay trong code nop cuoi cung.

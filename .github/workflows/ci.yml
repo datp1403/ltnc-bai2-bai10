@@ -1,0 +1,48 @@
+name: BankSystem CI - Bai 3-6-8
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17 and Maven dependency cache
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Checkstyle, compile, unit tests, package, JaCoCo verification
+        run: mvn --batch-mode --no-transfer-progress clean verify
+
+      - name: Upload executable JAR
+        uses: actions/upload-artifact@v7
+        with:
+          name: bank-system-jar-${{ matrix.os }}
+          path: target/bank-system-1.0-SNAPSHOT.jar
+          if-no-files-found: error
+
+      - name: Upload JaCoCo coverage report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: jacoco-report-${{ matrix.os }}
+          path: target/site/jacoco/
+          if-no-files-found: warn

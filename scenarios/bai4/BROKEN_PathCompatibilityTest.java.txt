@@ -1,0 +1,17 @@
+// Demo Bai 4: save as src/test/java/bai2/PathCompatibilityTest.java to intentionally fail on Linux/macOS.
+package bai2;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.nio.file.Path;
+import org.junit.jupiter.api.Test;
+
+/** This version intentionally assumes the Windows path separator. */
+class PathCompatibilityTest {
+
+  @Test
+  void hardcodedWindowsPathOnlyWorksOnWindows() {
+    Path path = Path.of("reports\\result.txt");
+    assertEquals(2, path.getNameCount());
+  }
+}

@@ -1,0 +1,4 @@
+Demo Bai 5 (tuy chon): giam coverage bang cach tam thoi bo qua test
+hoac them code chua test; chay 'mvn clean verify' phai that bai
+neu LINE coveredratio < 0.80, sau do hoan tac thay doi.
+KHONG dung -Djacoco.skip hay ha nguong <0.80 de lay BUILD SUCCESS.

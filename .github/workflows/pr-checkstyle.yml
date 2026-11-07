@@ -1,0 +1,26 @@
+name: PR Checkstyle Review - Bai 7
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  checkstyle-review:
+    name: checkstyle-review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v7
+
+      - name: Review changed Java lines with Google Checkstyle
+        uses: dbelyaev/action-checkstyle@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          filter_mode: added
+          level: error
+          fail_level: any

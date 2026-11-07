@@ -1,0 +1,5 @@
+<!-- DEMO ONLY: khong thay the toan bo pom.xml de nop.
+     1) Loi version Logback: chuyen version trong pom.xml tu 1.4.11 thanh 9.9.9.
+     2) Loi test plugin: chuyen maven-surefire-plugin 3.2.5 thanh 2.12.4.
+     Sua dung 1 loi moi lan, push, luu log, phuc hoi, push lai.
+-->

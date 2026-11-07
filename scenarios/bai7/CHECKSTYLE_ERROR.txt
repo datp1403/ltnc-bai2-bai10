@@ -1,0 +1,8 @@
+Demo Bai 7: Tao branch 'demo-checkstyle-error' tu main.
+Trong src/main/java/bai2/Bank.java, them tam 1 dong chua bien sai quy tac,
+vi du trong mot method: int BAD_NAME = 1;
+Commit va push, mo PR ve main.
+Quan sat comment cua action checkstyle va status check mau do.
+KHONG merge PR khi con loi. Sua lai thanh int goodName = 1;
+(hoac xoa dong demo), push lai cung branch. Kiem tra status xanh.
+Bat required status check trong Settings > Branches/Rulesets de block merge.
